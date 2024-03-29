@@ -37,30 +37,24 @@ base_map <- ggplot(data = americas) +
   theme_minimal(standard_size * 10) +
   theme(axis.text.x = element_blank(), axis.text.y = element_blank()) +
   labs(x = "", y = "") +
-  coord_sf(xlim = c(-118, -32), ylim = c(-50, 50))
+  coord_sf(xlim = c(-120, -35), ylim = c(-50, 50))
 
 
 
-colors_plot <- c(c("#fee090", "#377eb8", "#4daf4a",
-                   "#b2182b","#fa9fb5", "#984ea3","black"))
+colors_plot <- c(c("#b2182b", "#377eb8", "#4daf4a",
+                   ,"#fa9fb5", "#984ea3","black"))
 
 
 
 pp <-
   base_map +
   geom_jitter(data = dat0,
-              aes(x = lon/10, y = lat/10, fill = dtus, shape = dtus, size = dtus),
-             colour = "black") +
+              aes(x = lon/10, y = lat/10, fill = subtitle, shape = subtitle),
+              size = standard_size * 2, colour = "black", pch = 21) +
   scale_fill_manual(values = colors_plot) +
-  scale_shape_manual(values = c("TcI" = 21, "TcII" = 21, "TcIII" = 21,
-                                "TcIV" = 21, "TcV" = 21, "TcVI" = 21, "Tcbat" = 10)) +
-  scale_size_manual(values = c("TcI" = standard_size * 2, "TcII" = standard_size * 2,
-                               "TcIII" = standard_size * 2, "TcIV" = standard_size * 2,
-                               "TcV" = standard_size * 2, "TcVI" = standard_size * 2,
-                               "Tcbat" = standard_size * 4)) +
-  labs (fill = "DTUs", shape = "DTUs", alpha = "DTUs", size = "DTUs") +
-  theme(legend.position = "bottom", legend.direction = "horizontal") +
-  facet_wrap(vars(subtitle)) +
+  labs (fill = "xx", shape = "xx", alpha = "xx") +
+  theme(legend.position = "right") +
+  facet_wrap(vars(dtus), nrow = 2) +
   theme(panel.spacing.x = unit(0.0001, "cm"),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) +
@@ -69,7 +63,8 @@ pp <-
         strip.text = element_text(size = standard_size * 10, hjust = 0)) +
   guides(fill = guide_legend(nrow = 1, override.aes = list(size = standard_size * 4)))
 
-png(filename = "figs/Fig 2.png", width = 900 * 4, height = 480 * 4)
+
+png(filename = "figs/Fig 2_x.png", width = 900 * 4, height = 480 * 4)
 pp
 dev.off()
 
