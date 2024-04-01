@@ -53,6 +53,6 @@ p5 <- base_map +
 
 p_all <- cowplot::plot_grid(p1, p2, p3, p4, p5, nrow = 2)
 
-png(filename = "figs/Fig 1.png", width = 480 * 3.5, height = 480 * 1.5)
+png(filename = "figs/Fig 2.png", width = 480 * 3.5, height = 480 * 1.5)
 p_all
 dev.off()
