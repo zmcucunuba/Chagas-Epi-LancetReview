@@ -1,5 +1,3 @@
-
-
 ##### DTUs map
 rm(list=ls())
 library(ggplot2)
@@ -31,7 +29,7 @@ dat0$subtitle <- recode(dat0$source_sample,
 world <- ne_countries(scale = "medium", returnclass = "sf")
 americas <- world %>% dplyr::filter(region_un == "Americas")
 
-standard_size <- 5
+standard_size <- 3
 base_map <- ggplot(data = americas) +
   geom_sf(fill = "grey95", color = "black", size = 3) +
   theme_minimal(standard_size * 10) +
@@ -48,6 +46,7 @@ colors_plot <- c(c("#fee090", "#377eb8", "#4daf4a",
 
 pp <-
   base_map +
+  # theme_bw(standard_size)+
   geom_jitter(data = dat0,
               aes(x = lon/10, y = lat/10, fill = dtus, shape = dtus, size = dtus),
              colour = "black") +
@@ -67,9 +66,9 @@ pp <-
   theme(legend.key.size = unit(1, "cm"),
         legend.text = element_text(margin = margin(t = 0, r = 0, b = 0, l = -10)),
         strip.text = element_text(size = standard_size * 10, hjust = 0)) +
-  guides(fill = guide_legend(nrow = 1, override.aes = list(size = standard_size * 4)))
+  guides(fill = guide_legend(nrow = 1, override.aes = list(size = standard_size * 6)))
 
-png(filename = "figs/Fig 3.png", width = 900 * 4, height = 480 * 4)
+png(filename = "figs/Fig 3_.png", width = 900 * 4, height = 480 * 4)
 pp
 dev.off()
 
