@@ -68,7 +68,7 @@ pp <-
         strip.text = element_text(size = standard_size * 10, hjust = 0)) +
   guides(fill = guide_legend(nrow = 1, override.aes = list(size = standard_size * 6)))
 
-png(filename = "figs/Fig 3_.png", width = 900 * 4, height = 480 * 4)
+png(filename = "figs/Fig 3.png", width = 900 * 4, height = 480 * 4)
 pp
 dev.off()
 
